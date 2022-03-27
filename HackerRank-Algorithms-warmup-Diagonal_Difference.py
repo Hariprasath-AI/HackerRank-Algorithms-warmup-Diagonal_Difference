@@ -4,9 +4,11 @@ def diagonalDifference(arr):
 
     # This for loop is to get the 1st row 1st value, 2nd row second value and so on... and add those values
     for i in range(0, n):
-        prim_val = arr[i][i]
-        prim_diag_val += prim_val
-            
+        j = i
+        if arr[i][j] >= -100 and arr[i][j] <= 100:
+            prim_val = arr[i][j]
+            prim_diag_val += prim_val
+
     # Initialize Secondary diagonal value as Zero
     sec_diag_val = 0
 
@@ -16,8 +18,9 @@ def diagonalDifference(arr):
     # This for loop does the same as previous for loop as reverse.. e.g., 1row last value, second row last second value and so on....
     for i in range(0, n , 1):
         j = ind - i
-        sec_val = arr[i][j]
-        sec_diag_val += sec_val
+        if arr[i][j] >= -100 and arr[i][j] <= 100:
+            sec_val = arr[i][j]
+            sec_diag_val += sec_val
     
     # Perform the difference between primary and secondary diagonal and store absolute Solution value in the variable 'Solution', then return it to the called function
     Solution = prim_diag_val - sec_diag_val
@@ -31,7 +34,8 @@ if __name__ == '__main__':
 
     # This for loop is to convert the input into a list
     # A line from the user consists of some numbers seperated by spaces are converted into list
-    # Then it will added to the another list.. simply we can say it as 2D Array 
+    # Then it will added to the another list.. simply we can say it as 2D Array
+    # Each number must follow the contraint, otherwise output will be wrong 
     for _ in range(n):
         lst = list(map(int, input().rstrip().split()))
 
